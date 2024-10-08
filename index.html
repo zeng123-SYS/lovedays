@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+   .loveDaysContainer {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+   .loveDaysText {
+      color:red;
+      z-index: 1;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      position: absolute;
+      top: 300px;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 680px;
+    }
+    body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .carousel {
+            width: 550px;
+            overflow: hidden;
+            position: relative;
+            height: 650px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 650px;
+            width: 550px;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 600px) {
+    /* 针对手机屏幕的样式设置 */
+   .carousel-images {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="loveDaysContainer">
+    <div class="loveDaysText">恋爱第 <span id="loveDaysInfo"></span>天,<span id="lovehoursInfo"></span>小时，
+      <span id="loveMinutesInfo"></span>分钟，  <span id="loveSecondsInfo"></span>秒
+    
+    
+    </div>
+  
+    <video autoplay muted loop>
+      <source src="./tupian.html/4620b68e5e3bee5010d88ec242d6d48c.mp4 " type="video/mp4">
+     
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="carousel">
+    <div class="carousel-images">
+        <img src="./tupian.html/1.jpg" alt="Image 1">
+        <img src="./tupian.html/2.jpg" alt="Image 2">
+        <img src="./tupian.html/3.jpg" alt="Image 3">
+        <img src="./tupian.html/4.jpg" alt="Image 4">
+        <img src="./tupian.html/5.jpg" alt="Image 5">
+        <img src="./tupian.html/6.jpg" alt="Image 6">
+        <img src="./tupian.html/7.jpg" alt="Image 7">
+    </div>
+  </div>
+
+
+
+
+
+</div>
+</div>
+
+  <script>
+    // 设置恋爱开始日期
+    const startDate = new Date('2023-9-17');
+    setInterval(updateLoveDaysInfo, 1000);
+
+    function updateLoveDaysInfo() {
+      const currentDate = new Date();
+      const diffTime = currentDate - startDate;
+      const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const Minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+    const Seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+    document.getElementById('loveDaysInfo').textContent = days;
+    document.getElementById('lovehoursInfo').textContent = hours;
+    document.getElementById('loveMinutesInfo').textContent =Minutes ;
+    document.getElementById('loveSecondsInfo').textContent = Seconds;
+    }
+     
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel-images img');
+
+
+    function showNextImage() {
+        currentIndex++;
+        if(currentIndex>=images.length){
+          currentIndex=0;
+        }
+        const offset = -currentIndex * 100; // 每个图片宽度为100%
+        document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(showNextImage, 2000); // 每3秒自动切换
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
